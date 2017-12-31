@@ -19,9 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "SwiftySHViewController") as! ViewController
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
-        SHClientsManager.setupWithAppKey("hipointX"){host in
-            initialViewController.host.text = host
-            initialViewController.sysLog.text = "Install register/update finished"
+        SHClientsManager.setupWithAppKey("hipointX"){host, installid in
+            if let _host = host {
+                initialViewController.host.text = _host
+                initialViewController.sysLog.text = "Setting up -> host fetched: \(_host)\n"
+            } else if let _installid = installid {
+                initialViewController.installid.text = _installid
+                initialViewController.sysLog.text! += "Setting up -> installid received: \(_installid)\n"
+            }
         }
         return true
     }

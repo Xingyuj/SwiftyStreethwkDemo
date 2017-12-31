@@ -193,8 +193,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) SHClientsManager * _Nu
 + (void)setShProcessor:(SHClientsManager * _Nullable)value;
 @property (nonatomic, copy) NSString * _Nonnull appKey;
 @property (nonatomic, copy) NSString * _Nullable host;
-+ (void)setupWithAppKey:(NSString * _Nonnull)appKey completionHandler:(void (^ _Nonnull)(NSString * _Nonnull))completionHandler;
-- (void)tagViaApi:(NSDictionary<NSString *, NSString *> * _Nonnull)content authToken:(NSString * _Nonnull)authToken;
++ (void)setupWithAppKey:(NSString * _Nonnull)appKey completionHandler:(void (^ _Nonnull)(NSString * _Nullable, NSString * _Nullable))completionHandler;
+- (void)tagViaApi:(NSDictionary<NSString *, NSString *> * _Nonnull)content authToken:(NSString * _Nonnull)authToken completionHandler:(void (^ _Nonnull)(NSDictionary<NSString *, id> * _Nonnull))completionHandler;
 - (void)tagViaLogline:(NSDictionary<NSString *, NSString *> * _Nonnull)content;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end

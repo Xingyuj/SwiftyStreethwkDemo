@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/SHClientsManager.swift</key>
 		<data>
-		V5YaamYCiC3NL1AqMPWHpFaEMto=
+		nsWBMEss3EnFiNkGuPZfUkENTe0=
 		</data>
 		<key>Headers/SHSdkSwift-Swift.h</key>
 		<data>
-		Lu9Ze15IM1TqzPevPYexsBMqlvY=
+		glqiqcaap+XKf5eNHfDEPWvTR9g=
 		</data>
 		<key>Headers/SHSdkSwift.h</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/SHSdkSwift.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		kFkIXDXpq98D4LohQw1vl4ryJes=
+		MRTkr48knNoP+G+IBcDWB09iVL4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,22 +39,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			V5YaamYCiC3NL1AqMPWHpFaEMto=
+			nsWBMEss3EnFiNkGuPZfUkENTe0=
 			</data>
 			<key>hash2</key>
 			<data>
-			VPrYWDEzRQaurvuxxFD5sgY+naZVpSt15W6TMNru60E=
+			gZCmmG2hEU6YdKbaJ5yMqCUD31FLvt4ib9E7iU2mRvg=
 			</data>
 		</dict>
 		<key>Headers/SHSdkSwift-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Lu9Ze15IM1TqzPevPYexsBMqlvY=
+			glqiqcaap+XKf5eNHfDEPWvTR9g=
 			</data>
 			<key>hash2</key>
 			<data>
-			IBTGLdAb4tsehVzc0gYU/bbT7lqsm7dcBp6BG2SbJDc=
+			1rQ7Ddoh0yegkmNJyJVNYkrLMz1MAh06oLQikKcmgEo=
 			</data>
 		</dict>
 		<key>Headers/SHSdkSwift.h</key>
@@ -83,11 +83,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kFkIXDXpq98D4LohQw1vl4ryJes=
+			MRTkr48knNoP+G+IBcDWB09iVL4=
 			</data>
 			<key>hash2</key>
 			<data>
-			xV2t4Os7X2k1wQwIWvERQ8mpJYDkKbjMJ+qdjpVJet0=
+			P+k24qpjqpHyMmJbl/Qfpv+9uYatQJNN3xaBYnZ1W8U=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
