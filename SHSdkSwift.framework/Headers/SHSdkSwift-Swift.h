@@ -172,6 +172,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # define SWIFT_DEPRECATED_OBJC(Msg) SWIFT_DEPRECATED_MSG(Msg)
 #endif
 #if __has_feature(modules)
+@import ObjectiveC;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -183,5 +184,20 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wnullability"
 
 SWIFT_MODULE_NAMESPACE_PUSH("SHSdkSwift")
+
+/// This is a convenience class for the typical single user case. To use this
+SWIFT_CLASS("_TtC10SHSdkSwift16SHClientsManager")
+@interface SHClientsManager : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) SHClientsManager * _Nullable shProcessor;)
++ (SHClientsManager * _Nullable)shProcessor SWIFT_WARN_UNUSED_RESULT;
++ (void)setShProcessor:(SHClientsManager * _Nullable)value;
+@property (nonatomic, copy) NSString * _Nonnull appKey;
+@property (nonatomic, copy) NSString * _Nullable host;
++ (void)setupWithAppKey:(NSString * _Nonnull)appKey completionHandler:(void (^ _Nonnull)(NSString * _Nonnull))completionHandler;
+- (void)tagViaApi:(NSDictionary<NSString *, NSString *> * _Nonnull)content authToken:(NSString * _Nonnull)authToken;
+- (void)tagViaLogline:(NSDictionary<NSString *, NSString *> * _Nonnull)content;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
 SWIFT_MODULE_NAMESPACE_POP
 #pragma clang diagnostic pop

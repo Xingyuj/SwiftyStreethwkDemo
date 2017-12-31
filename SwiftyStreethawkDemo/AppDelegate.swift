@@ -14,10 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        SHClientsManager.setupWithAppKey("hipointX")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "SwiftySHViewController") as! ViewController
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        SHClientsManager.setupWithAppKey("hipointX"){host in
+            initialViewController.host.text = host
+            initialViewController.sysLog.text = "Install register/update finished"
+        }
         return true
     }
 

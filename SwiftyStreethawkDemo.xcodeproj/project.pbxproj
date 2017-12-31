@@ -7,35 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A06BA0C1FF7A4F600017419 /* SHSdkSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A06BA081FF7A47700017419 /* SHSdkSwift.framework */; };
-		8A06BA0D1FF7A4F600017419 /* SHSdkSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A06BA081FF7A47700017419 /* SHSdkSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A06BA0E1FF7A4F600017419 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B5A341FF725C500753AD7 /* Alamofire.framework */; };
-		8A06BA0F1FF7A4F600017419 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B5A341FF725C500753AD7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A9B59CA1FF718D500753AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B59C91FF718D500753AD7 /* AppDelegate.swift */; };
 		8A9B59CC1FF718D500753AD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B59CB1FF718D500753AD7 /* ViewController.swift */; };
 		8A9B59CF1FF718D500753AD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B59CD1FF718D500753AD7 /* Main.storyboard */; };
 		8A9B59D11FF718D500753AD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B59D01FF718D500753AD7 /* Assets.xcassets */; };
 		8A9B59D41FF718D500753AD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B59D21FF718D500753AD7 /* LaunchScreen.storyboard */; };
-		8A9B5A371FF725E500753AD7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B5A361FF725D300753AD7 /* SwiftyJSON.framework */; };
-		8A9B5A381FF725E500753AD7 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B5A361FF725D300753AD7 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A9B5A391FF725E500753AD7 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B5A351FF725CA00753AD7 /* SwiftyBeaver.framework */; };
-		8A9B5A3A1FF725E500753AD7 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B5A351FF725CA00753AD7 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A9B5A3D1FF725FF00753AD7 /* Pods_SHSdkSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B5A281FF7259A00753AD7 /* Pods_SHSdkSwift.framework */; };
-		8A9B5A3E1FF725FF00753AD7 /* Pods_SHSdkSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9B5A281FF7259A00753AD7 /* Pods_SHSdkSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AC62F5D1FF87E5C004308B7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F551FF87E49004308B7 /* Alamofire.framework */; };
+		8AC62F5E1FF87E5C004308B7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F551FF87E49004308B7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AC62F611FF87E5C004308B7 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F571FF87E49004308B7 /* SwiftyBeaver.framework */; };
+		8AC62F621FF87E5C004308B7 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F571FF87E49004308B7 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AC62F631FF87E5C004308B7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F561FF87E49004308B7 /* SwiftyJSON.framework */; };
+		8AC62F641FF87E5C004308B7 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F561FF87E49004308B7 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AC62F781FF8D060004308B7 /* SHSdkSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F761FF8D054004308B7 /* SHSdkSwift.framework */; };
+		8AC62F791FF8D060004308B7 /* SHSdkSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F761FF8D054004308B7 /* SHSdkSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8A9B59E71FF71FDF00753AD7 /* Embed Frameworks */ = {
+		8AC62F271FF872D4004308B7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8A9B5A3E1FF725FF00753AD7 /* Pods_SHSdkSwift.framework in Embed Frameworks */,
-				8A9B5A3A1FF725E500753AD7 /* SwiftyBeaver.framework in Embed Frameworks */,
-				8A06BA0D1FF7A4F600017419 /* SHSdkSwift.framework in Embed Frameworks */,
-				8A06BA0F1FF7A4F600017419 /* Alamofire.framework in Embed Frameworks */,
-				8A9B5A381FF725E500753AD7 /* SwiftyJSON.framework in Embed Frameworks */,
+				8AC62F641FF87E5C004308B7 /* SwiftyJSON.framework in Embed Frameworks */,
+				8AC62F621FF87E5C004308B7 /* SwiftyBeaver.framework in Embed Frameworks */,
+				8AC62F791FF8D060004308B7 /* SHSdkSwift.framework in Embed Frameworks */,
+				8AC62F5E1FF87E5C004308B7 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,7 +40,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8A06BA081FF7A47700017419 /* SHSdkSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SHSdkSwift.framework; sourceTree = "<group>"; };
 		8A9B59C61FF718D500753AD7 /* SwiftyStreethawkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyStreethawkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9B59C91FF718D500753AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A9B59CB1FF718D500753AD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,10 +47,10 @@
 		8A9B59D01FF718D500753AD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A9B59D31FF718D500753AD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A9B59D51FF718D500753AD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A9B5A281FF7259A00753AD7 /* Pods_SHSdkSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_SHSdkSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/SHSdkSwift-fmfsvuqqrcjpuicrtssmgpsowdwx/Build/Products/Debug-iphonesimulator/Pods_SHSdkSwift.framework"; sourceTree = "<group>"; };
-		8A9B5A341FF725C500753AD7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
-		8A9B5A351FF725CA00753AD7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyBeaver.framework; sourceTree = "<group>"; };
-		8A9B5A361FF725D300753AD7 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
+		8AC62F551FF87E49004308B7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Frameworks/Alamofire.framework; sourceTree = "<group>"; };
+		8AC62F561FF87E49004308B7 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Frameworks/SwiftyJSON.framework; sourceTree = "<group>"; };
+		8AC62F571FF87E49004308B7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Frameworks/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		8AC62F761FF8D054004308B7 /* SHSdkSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SHSdkSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +58,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A9B5A3D1FF725FF00753AD7 /* Pods_SHSdkSwift.framework in Frameworks */,
-				8A9B5A371FF725E500753AD7 /* SwiftyJSON.framework in Frameworks */,
-				8A06BA0C1FF7A4F600017419 /* SHSdkSwift.framework in Frameworks */,
-				8A06BA0E1FF7A4F600017419 /* Alamofire.framework in Frameworks */,
-				8A9B5A391FF725E500753AD7 /* SwiftyBeaver.framework in Frameworks */,
+				8AC62F631FF87E5C004308B7 /* SwiftyJSON.framework in Frameworks */,
+				8AC62F611FF87E5C004308B7 /* SwiftyBeaver.framework in Frameworks */,
+				8AC62F781FF8D060004308B7 /* SHSdkSwift.framework in Frameworks */,
+				8AC62F5D1FF87E5C004308B7 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,11 +101,10 @@
 		8A9B59DB1FF7196900753AD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8A06BA081FF7A47700017419 /* SHSdkSwift.framework */,
-				8A9B5A361FF725D300753AD7 /* SwiftyJSON.framework */,
-				8A9B5A351FF725CA00753AD7 /* SwiftyBeaver.framework */,
-				8A9B5A341FF725C500753AD7 /* Alamofire.framework */,
-				8A9B5A281FF7259A00753AD7 /* Pods_SHSdkSwift.framework */,
+				8AC62F761FF8D054004308B7 /* SHSdkSwift.framework */,
+				8AC62F551FF87E49004308B7 /* Alamofire.framework */,
+				8AC62F571FF87E49004308B7 /* SwiftyBeaver.framework */,
+				8AC62F561FF87E49004308B7 /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,7 +119,7 @@
 				8A9B59C21FF718D500753AD7 /* Sources */,
 				8A9B59C31FF718D500753AD7 /* Frameworks */,
 				8A9B59C41FF718D500753AD7 /* Resources */,
-				8A9B59E71FF71FDF00753AD7 /* Embed Frameworks */,
+				8AC62F271FF872D4004308B7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -331,6 +325,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = SwiftyStreethawkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -350,6 +345,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = SwiftyStreethawkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

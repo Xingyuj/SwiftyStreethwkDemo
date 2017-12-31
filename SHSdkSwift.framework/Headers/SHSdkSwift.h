@@ -15,3 +15,8 @@ FOUNDATION_EXPORT double SHSdkSwiftVersionNumber;
 FOUNDATION_EXPORT const unsigned char SHSdkSwiftVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SHSdkSwift/PublicHeader.h>
+
+#import <Alamofire/Alamofire-Swift.h>
+#import <SwiftyBeaver/SwiftyBeaver-Swift.h>
+#import <SwiftyJSON/SwiftyJSON-Swift.h>
+
