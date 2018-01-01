@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A7E8DC61FF9E895006F8E22 /* SHSdkSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7E8DC41FF9E859006F8E22 /* SHSdkSwift.framework */; };
+		8A7E8DC71FF9E895006F8E22 /* SHSdkSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7E8DC41FF9E859006F8E22 /* SHSdkSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A9B59CA1FF718D500753AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B59C91FF718D500753AD7 /* AppDelegate.swift */; };
 		8A9B59CC1FF718D500753AD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9B59CB1FF718D500753AD7 /* ViewController.swift */; };
 		8A9B59CF1FF718D500753AD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A9B59CD1FF718D500753AD7 /* Main.storyboard */; };
@@ -18,8 +20,6 @@
 		8AC62F621FF87E5C004308B7 /* SwiftyBeaver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F571FF87E49004308B7 /* SwiftyBeaver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AC62F631FF87E5C004308B7 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F561FF87E49004308B7 /* SwiftyJSON.framework */; };
 		8AC62F641FF87E5C004308B7 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AC62F561FF87E49004308B7 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8AFBCD2C1FF9449C00026777 /* SHSdkSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFBCD2A1FF9449200026777 /* SHSdkSwift.framework */; };
-		8AFBCD2D1FF9449C00026777 /* SHSdkSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFBCD2A1FF9449200026777 /* SHSdkSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,7 +31,7 @@
 			files = (
 				8AC62F641FF87E5C004308B7 /* SwiftyJSON.framework in Embed Frameworks */,
 				8AC62F621FF87E5C004308B7 /* SwiftyBeaver.framework in Embed Frameworks */,
-				8AFBCD2D1FF9449C00026777 /* SHSdkSwift.framework in Embed Frameworks */,
+				8A7E8DC71FF9E895006F8E22 /* SHSdkSwift.framework in Embed Frameworks */,
 				8AC62F5E1FF87E5C004308B7 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -40,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A7E8DC41FF9E859006F8E22 /* SHSdkSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SHSdkSwift.framework; sourceTree = "<group>"; };
 		8A9B59C61FF718D500753AD7 /* SwiftyStreethawkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyStreethawkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9B59C91FF718D500753AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A9B59CB1FF718D500753AD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +51,6 @@
 		8AC62F551FF87E49004308B7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Frameworks/Alamofire.framework; sourceTree = "<group>"; };
 		8AC62F561FF87E49004308B7 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Frameworks/SwiftyJSON.framework; sourceTree = "<group>"; };
 		8AC62F571FF87E49004308B7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Frameworks/SwiftyBeaver.framework; sourceTree = "<group>"; };
-		8AFBCD2A1FF9449200026777 /* SHSdkSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SHSdkSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			files = (
 				8AC62F631FF87E5C004308B7 /* SwiftyJSON.framework in Frameworks */,
 				8AC62F611FF87E5C004308B7 /* SwiftyBeaver.framework in Frameworks */,
-				8AFBCD2C1FF9449C00026777 /* SHSdkSwift.framework in Frameworks */,
+				8A7E8DC61FF9E895006F8E22 /* SHSdkSwift.framework in Frameworks */,
 				8AC62F5D1FF87E5C004308B7 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,7 +101,7 @@
 		8A9B59DB1FF7196900753AD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8AFBCD2A1FF9449200026777 /* SHSdkSwift.framework */,
+				8A7E8DC41FF9E859006F8E22 /* SHSdkSwift.framework */,
 				8AC62F551FF87E49004308B7 /* Alamofire.framework */,
 				8AC62F571FF87E49004308B7 /* SwiftyBeaver.framework */,
 				8AC62F561FF87E49004308B7 /* SwiftyJSON.framework */,

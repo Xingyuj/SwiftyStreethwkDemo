@@ -11,8 +11,6 @@ import SwiftyJSON
 
 let log = SwiftyBeaver.self
 
-/// This is a convenience class for the typical single user case. To use this
-
 @objc public class SHClientsManager:NSObject {
     @objc public static var shProcessor: SHClientsManager?
     @objc public var appKey: String
@@ -25,6 +23,7 @@ let log = SwiftyBeaver.self
     var installId: String?
     var model: String?
     var osVersion: String?
+    var timer = Timer()
     typealias CompletionHandler = (JSON?) -> ()
 
     @objc init(appKey: String) {
@@ -33,6 +32,7 @@ let log = SwiftyBeaver.self
         if let version = Bundle.main.infoDictionary?["CFBundleVersion"]  as? String {
             self.libVersion = version
         }
+        super.init()
         // set log
         let console = ConsoleDestination()  // log to Xcode Console
         let file = FileDestination()  // log to default swiftybeaver.log file
@@ -40,6 +40,14 @@ let log = SwiftyBeaver.self
         file.logFileURL = url
         log.addDestination(console)
         log.addDestination(file)
+        // set timer for heart beat
+        self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(heartBeat), userInfo: nil, repeats: true)
+    }
+    
+    @objc public func heartBeat(){
+        let content = JSON([ManagerConstants.CODE: ManagerConstants.CODE_HEARTBEAT])
+        accumulateLogline(content)
+        log.debug("heart still beating")
     }
     
     @objc public static func setupWithAppKey(_ appKey: String, completionHandler: @escaping (String?, String?) -> ()) {
@@ -207,7 +215,7 @@ let log = SwiftyBeaver.self
         apiProcessor.path = ManagerConstants.V3_TAGS
         apiProcessor.headers!["X-Auth-Token"] = authToken
         apiProcessor.parameters = (resultParam.rawValue as! [String:Any])
-        
+
         log.debug("processLogline initial finished")
         apiProcessor.requestHandler(){ res, error in
             print("tagViaApi sent successful res returned....")
@@ -222,19 +230,58 @@ let log = SwiftyBeaver.self
         }
     }
     
-    @objc public func tagViaLogline(_ content: Dictionary<String, String>){
+    @objc public func tagViaLogline(_ content: Dictionary<String, String>, completionHandler: @escaping (Dictionary<String, Any>) -> ()){
         var jsonContent = JSON(content)
         jsonContent[ManagerConstants.CODE].int = ManagerConstants.CODE_UPDATE_CUSTOM_TAG
-        sendPriorityLogline(jsonContent)
+        sendPriorityLogline(jsonContent) { result in
+            completionHandler(result)
+        }
     }
     
-    public func sendPriorityLogline(_ content: JSON){
+    public func sendPriorityLogline(_ content: JSON, completionHandler: @escaping (Dictionary<String, Any>) -> ()){
         var immediateLogBuffer: Array<Any> = []
         ManagerUtils.assembleLogRecords(&immediateLogBuffer, content)
-        processLogline(immediateLogBuffer)
+        processLogline(immediateLogBuffer) { result in
+            completionHandler(result)
+        }
     }
     
-    public func processLogline(_ records: Array<Any>){
+    public func flushBuffer(completionHandler: @escaping (Dictionary<String, Any>) -> ()){
+        if logBuffer.isEmpty {
+            log.info("unable to flush, log buffer is empty")
+            return
+        }
+        processLogline(logBuffer){ res in
+            completionHandler(res)
+        }
+    }
+    
+    public func accumulateLogline(_ content: JSON){
+        ManagerUtils.assembleLogRecords(&logBuffer, content)
+        if ManagerConstants.BUFFER_SIZE <= logBuffer.count {
+            processLogline(logBuffer){_ in}
+            logBuffer.removeAll()
+        }
+    }
+
+    // simulateNormalLogline not include complete ligline set
+    public func simulateNormalLogline(_ action: String){
+        var content = JSON()
+        switch action {
+        case "completeActivity":
+            content = JSON([ManagerConstants.CODE: ManagerConstants.CODE_COMPLETE_ACTIVITY])
+        case "acceptPush":
+            content = JSON([ManagerConstants.CODE: ManagerConstants.CODE_PUSH_ACK])
+        case "upgradeClient":
+            content = JSON([ManagerConstants.CODE: ManagerConstants.CODE_CLIENT_UPGRADE])
+        default:
+            log.error("no such a logline type")
+        }
+        accumulateLogline(content)
+        log.debug("heart normal logline added to buffer")
+    }
+    
+    public func processLogline(_ records: Array<Any>, completionHandler: @escaping (Dictionary<String, Any>) -> ()){
         log.info("processLogline begin")
         if (host == nil){
             return
@@ -260,14 +307,14 @@ let log = SwiftyBeaver.self
         apiProcessor.method = HTTPMethod.post
         log.debug("processLogline initial finished")
         apiProcessor.requestHandler(){ res, error in
-            print("Logline sent successful res returned....")
+            log.debug("Logline sent successful res returned....")
             if let _res = res {
                 log.info("Logline sent successful, res: \(String(describing: _res))")
-                print("Logline sent successful, res: \(String(describing: _res))")
+                completionHandler(_res.rawValue as! [String: Any])
             } else if let _error = error {
-                NSLog(_error.localizedDescription)
+                log.error(_error.localizedDescription)
             } else {
-                os_log("Both response and error are nil return from server", type: .error)
+                log.error("Both response and error are nil return from server")
             }
         }
     }

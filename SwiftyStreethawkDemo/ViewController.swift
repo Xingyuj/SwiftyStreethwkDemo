@@ -11,8 +11,6 @@ import SHSdkSwift
 
 class ViewController: UIViewController {
 
-//    var count = 0
-//    var timer:Timer?
     @IBOutlet weak var tagkey: UITextField!
     @IBOutlet weak var tagvalue: UITextField!
     @IBOutlet weak var host: UILabel!
@@ -23,15 +21,38 @@ class ViewController: UIViewController {
     @IBAction func sendLoglineTag(_ sender: Any) {
         let content = ["key": tagkey.text!, "string": tagvalue.text!]
         self.sysLog.text! += "tagging via logline..."
-        SHClientsManager.shProcessor?.tagViaLogline(content)
+        SHClientsManager.shProcessor?.tagViaLogline(content) { res in
+            self.sysLog.text! += "done, return: \(String(describing: res)) \n"
+        }
     }
-
+    
+    @IBAction func flushBuffer(_ sender: Any) {
+        SHClientsManager.shProcessor?.flushBuffer(){ res in
+            self.sysLog.text! += "flushBuffer, return: \(String(describing: res)) \n"
+        }
+    }
+    
     @IBAction func sendApiTag(_ sender: Any) {
         let content = ["key": tagkey.text!, "string": tagvalue.text!]
         self.sysLog.text! += "tagging via api..."
         SHClientsManager.shProcessor?.tagViaApi(content, authToken: "1JMyBIGTLLA86MxJ7nCm7kBZoSiOmJ"){ res in
             self.sysLog.text! += "done, return: \(String(describing: res)) \n"
         }
+    }
+    
+    @IBAction func completeActivity(_ sender: Any) {
+        SHClientsManager.shProcessor?.simulateNormalLogline("completeActivity")
+        self.sysLog.text! += "add a completeActivity logline to buffer \n"
+    }
+    
+    @IBAction func acceptPush(_ sender: Any) {
+        SHClientsManager.shProcessor?.simulateNormalLogline("acceptPush")
+        self.sysLog.text! += "add an acceptPush logline to buffer \n"
+    }
+    
+    @IBAction func upgradeClient(_ sender: Any) {
+        SHClientsManager.shProcessor?.simulateNormalLogline("upgradeClient")
+        self.sysLog.text! += "add a upgradeClient logline to buffer \n"
     }
     
     override func viewDidLoad() {
