@@ -5,7 +5,6 @@
 
 import Foundation
 import Alamofire
-import os.log
 import SwiftyBeaver
 import SwiftyJSON
 
@@ -76,73 +75,63 @@ let log = SwiftyBeaver.self
     
     private func findAppHost(completionHandler: @escaping CompletionHandler){
         print("findAppHost beginning....")
+        let version = ManagerUtils.getSDKVersion()
         let apiProcessor = SHApiProcessor.init(ManagerConstants.ROUTE_SERVER)
         apiProcessor.requestScheme = ManagerConstants.HTTPS_SCHEME
         apiProcessor.encoding = URLEncoding.default
         apiProcessor.path = ManagerConstants.ROUTE_QUERY
         apiProcessor.parameters = ["app_key": appKey]
         apiProcessor.method = HTTPMethod.get
-        apiProcessor.headers = ["X-App-Key": "hipointX", "X-Version": "1.8.8", "User-Agent": "hipointX(1.8.8)"]
+        apiProcessor.headers = ["X-App-Key": "hipointX", "X-Version": version, "User-Agent": "\(appKey)(\(version))"]
 
-        print("prepare processing SHApi....")
         apiProcessor.requestHandler(){ res, error in
             if let _res = res {
                 var result = JSON()
                 if let locationUpdates = _res["app_status"]["location_updates"].rawString() {
                     result["locationUpdates"].string = locationUpdates
                 } else {
-                    print("app_status.location_updates is nil")
+                    log.error("app_status.location_updates is nil")
                 }
                 if let host = _res["app_status"]["host"].rawString() {
                     result["host"].string = host
                 } else {
-                    print("app_status.host is nil")
+                    log.error("app_status.host is nil")
                 }
                 if let growthHost = _res["app_status"]["growth_host"].rawString() {
                     result["growthHost"].string = growthHost
                 } else {
-                    print("app_status.growth_host is nil")
+                    log.error("app_status.growth_host is nil")
                 }
                 completionHandler(result)
             } else if let _error = error {
-                NSLog(_error.localizedDescription)
+                log.error(_error.localizedDescription)
             } else {
-                os_log("Both response and error are nil return from server", type: .error)
+                log.error("Both response and error are nil return from server")
             }
         }
     }
     
     private func registerInstall(completionHandler: @escaping CompletionHandler){
-        print("registerInstall beginning....")
-        if let _host = host {
-            print("registerInstall host got....")
-            let apiProcessor = SHApiProcessor.init((URL(string: _host)?.host)!)
-            print("init ManagerUtil done....")
-            apiProcessor.requestScheme = ManagerConstants.HTTPS_SCHEME
-            apiProcessor.encoding = JSONEncoding.default
-            apiProcessor.path = ManagerConstants.INSTALL_REGISTER
-            apiProcessor.parameters = ["sh_version": "1.8.8", "operating_system": "ios"]
-            apiProcessor.headers = ["X-App-Key": appKey, "Content-Type": "application/json"]
-            apiProcessor.method = HTTPMethod.post
-            print("registerInstall initial done....")
-            apiProcessor.requestHandler(){ res, error in
-                log.debug("registerInstall res returned....")
-                if let _res = res {
-                    if _res["value"].exists() {
-                        completionHandler(_res)
-                    } else {
-                        log.error("[registerInstall] server return contains no value: \(_res.rawValue)")
-                    }
-                } else if let _error = error {
-                    log.error("[registerInstall] server error msg when registerInstall: \(_error)")
+        log.debug("registerInstall host got: \(String(describing: host))")
+        let apiProcessor = SHApiProcessor.init((URL(string: host!)?.host)!)
+        presetCommonValues(apiProcessor)
+        apiProcessor.path = ManagerConstants.INSTALL_REGISTER
+        apiProcessor.parameters = ["sh_version": ManagerUtils.getSDKVersion(), "operating_system": "ios"]
+        apiProcessor.headers = ["X-App-Key": appKey, "Content-Type": "application/json"]
+        apiProcessor.requestHandler(){ res, error in
+            log.debug("registerInstall res returned....")
+            if let _res = res {
+                if _res["value"].exists() {
+                    completionHandler(_res)
                 } else {
-                    log.error("[registerInstall] server return empty msg")
+                    log.error("[registerInstall] server return contains no value: \(_res.rawValue)")
                 }
+            } else if let _error = error {
+                log.error("[registerInstall] server error msg when registerInstall: \(_error)")
+            } else {
+                log.error("[registerInstall] server return empty msg")
             }
-        } else {
-            log.error("host is unclear")
         }
-        
     }
     
     private func updateInstall(){
@@ -167,7 +156,6 @@ let log = SwiftyBeaver.self
             apiProcessor.parameters = (resultParam.rawValue as! [String:Any])
             log.debug("updateInstall initial done....")
             apiProcessor.requestHandler(){ res, error in
-                print("updateInstall res returned....")
                 if let _res = res {
                     log.info("Install update successful, res: \(String(describing: _res))")
                 } else if let _error = error {
@@ -203,8 +191,6 @@ let log = SwiftyBeaver.self
         if (host == nil){
             return
         }
-        log.debug("tagViaApi begin")
-        print((URL(string: host!)?.host)!)
         let apiProcessor = SHApiProcessor.init((URL(string: host!)?.host)!)
         presetCommonValues(apiProcessor, method: HTTPMethod.post)
         let presetParameters = JSON(apiProcessor.parameters!)
@@ -278,7 +264,7 @@ let log = SwiftyBeaver.self
             log.error("no such a logline type")
         }
         accumulateLogline(content)
-        log.debug("heart normal logline added to buffer")
+        log.debug("Normal logline added to buffer")
     }
     
     public func processLogline(_ records: Array<Any>, completionHandler: @escaping (Dictionary<String, Any>) -> ()){
@@ -286,7 +272,6 @@ let log = SwiftyBeaver.self
         if (host == nil){
             return
         }
-        print((URL(string: host!)?.host)!)
         let apiProcessor = SHApiProcessor.init((URL(string: host!)?.host)!)
         var param = [String: Any]()
         param = [
