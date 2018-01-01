@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         SHClientsManager.setupWithAppKey("hipointX"){host, installid in
             if let _host = host {
+                initialViewController.appKey.text = "hipointX"
                 initialViewController.host.text = _host
                 initialViewController.sysLog.text = "Setting up -> host fetched: \(_host)\n"
             } else if let _installid = installid {

@@ -18,6 +18,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var sysLog: UITextView!
     @IBOutlet weak var installid: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        sysLog.isScrollEnabled = true
+        sysLog.becomeFirstResponder()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        self.hideKeyboardWhenTappedAround()
+        let range = NSMakeRange(self.sysLog.text.utf8CString.count - 1, 0)
+        self.sysLog.scrollRangeToVisible(range)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func scrollToEnd(_ someTextView:UITextView) {
+        let bottom = NSMakeRange(someTextView.text.lengthOfBytes(using: .utf8)-1, 1)
+        someTextView.scrollRangeToVisible(bottom)
+    }
+    
     @IBAction func sendLoglineTag(_ sender: Any) {
         let content = ["key": tagkey.text!, "string": tagvalue.text!]
         self.sysLog.text! += "tagging via logline..."
@@ -55,31 +80,6 @@ class ViewController: UIViewController {
         self.sysLog.text! += "add a upgradeClient logline to buffer \n"
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.appKey.text = "hipointX"
-
-        // Do any additional setup after loading the view, typically from a nib.
-        self.hideKeyboardWhenTappedAround()
-        let range = NSMakeRange(self.sysLog.text.utf8CString.count - 1, 0)
-        self.sysLog.scrollRangeToVisible(range)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        sysLog.isScrollEnabled = true
-        sysLog.becomeFirstResponder()
-    }
-    
-    func scrollToEnd(_ someTextView:UITextView) {
-        let bottom = NSMakeRange(someTextView.text.lengthOfBytes(using: .utf8)-1, 1)
-        someTextView.scrollRangeToVisible(bottom)
-    }
 }
 
 extension UIViewController {
